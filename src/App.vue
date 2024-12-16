@@ -1,38 +1,33 @@
 <script>
-import AppHeader from './components/AppHeader.vue';
-import AppHeader from './components/AppHeader.vue';
+import AppHeader from './components/Header/AppHeader.vue';
+import AppMain from './components/Main/AppMain.vue';
 
 export default {
   data() {
     return {
-      message: 'Template Vite + Vue'
+
     }
   },
 
   components: {
     AppHeader,
+    AppMain,
   }
 }
 </script>
 
-<template> 
-  <header>
-    <h1> 
-        <AppHeader />
-    </h1>
-  </header>
+<template>
+  <div class="w-8/12 mx-auto">
+    <header>
+      <AppHeader />
+    </header>
+    <main>
+      <AppMain />
+    </main>
+  </div> 
 </template>
 
-<style lang="scss" scoped>
-@use 'assets/scss/main.scss' as *;
+<style>
 
-header {
-    background-color: aquamarine;
-    text-align: center;
-}
-
-h1 {
-    color: lightcoral;
-}
 </style>
 
