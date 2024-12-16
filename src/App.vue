@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div class="w-8/12 mx-auto">
+  <div class="w-5/12 mx-auto">
     <header>
       <AppHeader />
     </header>
