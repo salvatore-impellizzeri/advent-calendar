@@ -7,19 +7,27 @@ export default {
   },
 
   props: {
-    gif: String,
-    text: String
+    gif: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
   },
+
   methods: {
-    closeModal() {
-      this.close = !this.close;
+    handleClose() {
+      this.close = true; 
+      this.$emit('close', 'Modale chiusa');
     },
   },
 };
 </script>
 
 <template>
-  <div v-if="!closeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div v-if="!close" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div 
       class="flex flex-col gap-7 justify-center items-center rounded-2xl bg-white py-7 px-5"
       style="width: 400px;"
@@ -35,7 +43,7 @@ export default {
         </div>
       </div>
       <button 
-        @click="closeModal"
+        @click="handleClose"
         class="bg-red-600 py-2 px-7 rounded-full text-white text-lg font-semibold"
       >
         Chiudi

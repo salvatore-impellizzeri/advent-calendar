@@ -6,7 +6,7 @@ export default {
   data() {
     return {
         store,
-        modal: false,
+        activeIndex: null,
     }
   },
 
@@ -15,9 +15,13 @@ export default {
   },
 
   methods:{
-    openModal(){
-      modal = true
-    }
+    openModal(index){
+      this.activeIndex = index;
+    },
+    
+    handleModalClose() {
+    this.activeIndex = null;
+  },
   }
 }
 </script>
@@ -28,7 +32,7 @@ export default {
           class="bg-[#2E6754] rounded-lg flex flex-col items-center justify-center" 
           v-for="(day, index) in store.source" 
           :key="index" 
-          @click="openModal"
+          @click="openModal(index)"
           :class="[index === 24 ? 'bg-[#D4D6F5] col-span-8 text-[#2E6754] aspect-auto' : 'aspect-square']"
         >
             <img :src="day.icon" alt=""
@@ -38,9 +42,11 @@ export default {
         </div> 
     </div>
     <div>
-      <Modal v-for="(modal, index) in store.source"
-        :gif="modal.url"
-        :text="modal.text"
+      <Modal   
+      v-if="activeIndex !== null" 
+      :gif="store.source[activeIndex].url" 
+      :text="store.source[activeIndex].text" 
+      @close="handleModalClose"
       />
     </div>
 </template>

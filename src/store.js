@@ -127,5 +127,5 @@ export const store = reactive({
             "icon": "/icon/ico-caramella.png",
             "url": "images/dance.gif"
         }
-    ]
+    ],
 });
